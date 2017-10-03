@@ -1,0 +1,7 @@
+{
+  "name": "dropbot-ui-plugin",
+  "version": "0.0.1",
+  "type": "ui",
+  "script": "dropbot.js",
+  "views": ["dropbot-iframe/index.html"]
+}
