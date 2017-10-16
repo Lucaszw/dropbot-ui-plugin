@@ -9,13 +9,13 @@ class DropBotUI extends UIPlugin {
     this.onStateMsg("dropbot_plugin", "stats", this.onStatsSet.bind(this));
     this.onStateMsg("dropbot_plugin", "frequency", this.onFrequencySet.bind(this));
     this.onStateMsg("dropbot_plugin", "voltage", this.onVoltageSet.bind(this));
+    this.onStateMsg("dropbot_plugin", "capacitance", this.onCapacitanceSet.bind(this));
   }
   onStatsSet(payload) {this.model.set("stats", JSON.parse(payload));}
   onFrequencySet(payload) {this.model.set("frequency", JSON.parse(payload));}
   onVoltageSet(payload){this.model.set("voltage", JSON.parse(payload));}
+  onCapacitanceSet(payload){this.model.set("capacitance", JSON.parse(payload).capacitance);}
   render() {
-    console.log("rendering...");
-
     this.element.innerHTML = `
       <ul class="list-group">
         <li class="list-group-item">
@@ -26,6 +26,9 @@ class DropBotUI extends UIPlugin {
         </li>
         <li class="list-group-item">
           <b>Frequency</b>: ${this.model.get("frequency")}
+        </li>
+        <li class="list-group-item">
+          <b>Capacitance</b>: ${this.model.get("capacitance")}
         </li>
       </ul>
     `;
