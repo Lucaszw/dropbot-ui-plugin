@@ -2,7 +2,6 @@ class DropBotUI extends UIPlugin {
   constructor(elem, focusTracker){
     super(elem, focusTracker, "Experiment Controller");
     this.model = new Backbone.Model();
-    this.listen();
   }
   listen() {
     this.model.on("all", this.render.bind(this));
@@ -11,8 +10,8 @@ class DropBotUI extends UIPlugin {
     this.onStateMsg("dropbot_plugin", "voltage", this.onVoltageSet.bind(this));
     this.onStateMsg("dropbot_plugin", "capacitance", this.onCapacitanceSet.bind(this));
   }
-  onStatsSet(payload) {this.model.set("stats", JSON.parse(payload));}
-  onFrequencySet(payload) {this.model.set("frequency", JSON.parse(payload));}
+  onStatsSet(payload){this.model.set("stats", JSON.parse(payload));}
+  onFrequencySet(payload){this.model.set("frequency", JSON.parse(payload));}
   onVoltageSet(payload){this.model.set("voltage", JSON.parse(payload));}
   onCapacitanceSet(payload){this.model.set("capacitance", JSON.parse(payload).capacitance);}
   render() {
